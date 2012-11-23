@@ -30,6 +30,7 @@ Legal issues: Portions Copyright (C) 2011, 2012 Chris Tanaskoski,
                  distribution.
 History:
 05 Mar 2012   V0.01 Initial release
+23 Nov 2012   Bug fix in cookie_parse
 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *}
 
@@ -116,16 +117,16 @@ begin
   cinfo := TStringList.Create;
   cinfo.Delimiter := '=';
 
-  csplit.Text := String(line);
+  csplit.DelimitedText := String(line);
 
   for i := 0 to csplit.Count - 1 do
   begin
-    cinfo.Text := csplit.Strings[i];
+    cinfo.DelimitedText := csplit.Strings[i];
 
     key := AnsiString(Trim(cinfo.Strings[0]));
-		val := AnsiString(UrlDecode(cinfo.Strings[1])); // can be empty
+    val := AnsiString(UrlDecode(cinfo.Strings[1])); // can be empty
 
-		cookies.Add(String(key + '=' + val));
+    cookies.Add(String(key + '=' + val));
 
   end;
 
@@ -345,7 +346,8 @@ var
   p: Integer;
 begin
   spaces_n := random(12) + 1;
-  max_n := MaxInt div spaces_n;
+
+  max_n := MaxInt div spaces_n;
   number_n := random(max_n + 1);
   product_n := number_n * spaces_n;
   key_n := AnsiString(IntToStr(product_n));
