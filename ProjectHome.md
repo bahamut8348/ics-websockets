@@ -1,0 +1,5 @@
+A basic pascal implementation of WebSockets server based on TWSocketServer component from <a href='http://www.overbyte.be/'>Internet Component Suite (ICS)</a>. To compile the code you should download and install ICSv7. Delphi 2010 has been used for the development, in case you use another version of Delphi some adjustments to the code may be necessary.
+
+WebSockets core code has been ported from <a href='http://code.google.com/p/phpws/'>phpws project</a>.
+
+A demo is available as featured download, and comprises _client.html_ web-page and _WebSocketSrv.exe_ executable. To run the demo you should have a web-server which could host the _client.html_. Start the executable and then open the page in a browser with websockets support (most modern browsers do provide websocket client built-in). The demo is a simple `echo` service - it will respond with the same message that you send to it by means of a form available in the _client.html_. The server uses the port 12345 - please, make sure you enable this port in your firewall.
